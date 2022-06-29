@@ -7,7 +7,7 @@ namespace WebApp.Models
         {
         }
 
-        public Guid Id { get; set; }
+        public Guid BranchId { get; set; }
         public string Address { get; set; }
     }
 }

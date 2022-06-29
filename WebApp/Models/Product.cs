@@ -7,7 +7,7 @@ namespace WebApp.Models
         {
         }
 
-        public Guid Id { get; set; }
+        public Guid ProductId { get; set; }
         public string Name { get; set; }
         public Category Category { get; set; }
         public int Stock { get; set; }

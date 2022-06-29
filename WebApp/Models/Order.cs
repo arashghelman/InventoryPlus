@@ -7,7 +7,7 @@ namespace WebApp.Models
         {
         }
 
-        public Guid Id { get; set; }
+        public Guid OrderId { get; set; }
         public DateTime SubmissionDate { get; set; }
         public OrderState State { get; set; }
         public List<OrderDetail> Details { get; set; }
