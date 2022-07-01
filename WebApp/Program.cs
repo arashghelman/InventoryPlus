@@ -1,7 +1,10 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using WebApp.Repositories;
+
+var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
+app.MapGet("/products", () => new ProductRepository().SelectAll());
 
 app.Run();
 
