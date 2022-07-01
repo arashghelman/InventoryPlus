@@ -8,7 +8,6 @@ namespace WebApp.Models
         public Category Category { get; set; }
         public int Stock { get; set; }
         public DateTime SubmissionDate { get; set; }
-        public List<string> PhotosUrl { get; set; }
         public string Unit { get; set; }
         public float Price { get; set; }
     }
