@@ -3,10 +3,6 @@ namespace WebApp.Models
 {
     public class Order
     {
-        public Order()
-        {
-        }
-
         public Guid OrderId { get; set; }
         public DateTime SubmissionDate { get; set; }
         public OrderState State { get; set; }

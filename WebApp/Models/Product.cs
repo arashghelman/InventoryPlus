@@ -3,10 +3,6 @@ namespace WebApp.Models
 {
     public class Product
     {
-        public Product()
-        {
-        }
-
         public Guid ProductId { get; set; }
         public string Name { get; set; }
         public Category Category { get; set; }
@@ -14,7 +10,7 @@ namespace WebApp.Models
         public DateTime SubmissionDate { get; set; }
         public List<string> PhotosUrl { get; set; }
         public string Unit { get; set; }
-        public float PricePerUnit { get; set; }
+        public float Price { get; set; }
     }
 }
 
