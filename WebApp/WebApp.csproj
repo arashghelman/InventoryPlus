@@ -12,17 +12,18 @@
     <None Remove="Resources\inventory_plus.db" />
     <None Remove="Microsoft.Data.Sqlite" />
     <None Remove="Repositories\" />
+    <None Remove="Utilities\" />
+    <None Remove="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
     <Folder Include="Resources\" />
     <Folder Include="Repositories\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="6.0.6" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Resources\InventoryPlus.db" />
   </ItemGroup>
 </Project>

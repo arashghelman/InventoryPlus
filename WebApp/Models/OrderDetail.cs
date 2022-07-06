@@ -4,8 +4,7 @@ namespace WebApp.Models
     public class OrderDetail
     {
         public Guid OrderId { get; set; }
-        public Product OrderedProduct { get; set; }
+        public Guid ProductId { get; set; }
         public int Quantity { get; set; }
     }
 }
-

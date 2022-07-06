@@ -1,53 +1,52 @@
 INSERT INTO categories(category_id, name)
-VALUES("7c63a09d-8373-4544-a091-376180b75870", "آرایشی و بهداشتی"),
-("b-477c-8818-3b77ec87729c", "پوشاک"),
-("233fb-fa0b-48dd-a6ba-387e6c279bea", "دیجیتال"),
-("60b-1c00-41e6-9d8b-1180cb7a432c", "مواد غذایی"),
-("f-17ec-4299-aca3-1fdaa503cb47", "ابزار و تجهیزات صنعتی"),
-("7b-bea7-b21a401a75db", "خانگی"),
-("83cf8-197f-415a-9384-dde809e5deac", "متفرقه");
+VALUES("d7f5c843-8d5c-4bc6-804a-6c80741c787d", "آرایشی و بهداشتی"),
+("0b15276b-e6c6-4b6b-a538-f2d045e9bd5b", "پوشاک"),
+("2ba33d6e-fc05-40da-b28e-3a9197e41955", "دیجیتال"),
+("4d60246a-3455-45b9-b58c-7d7bc9ddddb5", "مواد غذایی"),
+("3263d16b-e318-4885-959f-5f4f1fcef4c5", "ابزار و تجهیزات صنعتی"),
+("189634d3-72f8-4394-b4ac-451931bd32bf", "خانگی"),
+("f1e6a736-d09a-4c34-ac8b-1bb6824de3ce", "متفرقه");
 
-INSERT INTO products(product_id, name, category_id, stock, 
-submission_date, unit, price)
-VALUES("bf77de57-5289-4b39-86b3-8c75459e49a0", "میز ناهارخوری ناصر پلاستیک مدل 323", 
-"5012cb7d-0b86-4c7b-bea7-b21a401a75db", 35, date(), "عدد", 2080000),
-("bd9d7843-1323-4dd3-8795-61a56edd58ce", "شلوار مردانه پنبه شکار مدل اسلش شش جیب",
-"af66095c-8c8b-477c-8818-3b77ec87729c", 12, date(), "عدد", 100400),
-("fd18452e-5d51-4e99-bcf3-e0c8cd87e0d7", "خامه ترش کاله - 200 گرم",
-"1060060b-1c00-41e6-9d8b-1180cb7a432c", 101, date(), "گرم", 25000),
-("451c4a71-b25f-4120-866e-4fa32b1a8997", "ماهی تن دودی کیان ماهی خزر - 150 گرم",
-"1060060b-1c00-41e6-9d8b-1180cb7a432c", 30, date(), "گرم", 64800),
-("be4f72fa-edb1-4f7e-8cc9-c051b35d5280", "اسپیکر خودرو پایونیر مدلTS-6975 V3",
-"886233fb-fa0b-48dd-a6ba-387e6c279bea", 2, date(), "دستگاه", 2997000),
-("bad348e5-5fa7-40aa-8b0d-07c15e61de8e", "موتور برق بنزینی رونیکس مدل RH 4708",
-"115457bf-17ec-4299-aca3-1fdaa503cb47", 1, date(), "دستگاه", 6748000),
-("eebab6cc-954e-476a-99fb-bb28bfe30fce", "سرم پوست بایو آکوا مدل ویتامین C حجم 100 میلی لیتر",
-"7c63a09d-8373-4544-a091-376180b75870", 17, date(), "میلی لیتر", 68800);
+INSERT INTO products(productId, name, categoryId, stock, 
+submissionDate, unit, price)
+VALUES("2e9efb38-32d5-45b7-8101-55a1021882dc", "میز ناهارخوری ناصر پلاستیک مدل 323", 
+"189634d3-72f8-4394-b4ac-451931bd32bf", 35, date(), "عدد", 2080000),
+("c469e8ec-5796-4776-a4f9-b100a3243b1d", "شلوار مردانه پنبه شکار مدل اسلش شش جیب",
+"0b15276b-e6c6-4b6b-a538-f2d045e9bd5b", 12, date(), "عدد", 100400),
+("c9579fda-bf49-42e2-9056-9a3e2367b484", "خامه ترش کاله - 200 گرم",
+"4d60246a-3455-45b9-b58c-7d7bc9ddddb5", 101, date(), "گرم", 25000),
+("0f857122-73b5-4441-a1f9-70c6b61026b0", "ماهی تن دودی کیان ماهی خزر - 150 گرم",
+"4d60246a-3455-45b9-b58c-7d7bc9ddddb5", 30, date(), "گرم", 64800),
+("7180fe9c-cdf3-4619-86e7-f9f0275ab469", "اسپیکر خودرو پایونیر مدلTS-6975 V3",
+"2ba33d6e-fc05-40da-b28e-3a9197e41955", 2, date(), "دستگاه", 2997000),
+("bf60592f-8702-4d05-b171-715e8b7bdb5b", "موتور برق بنزینی رونیکس مدل RH 4708",
+"3263d16b-e318-4885-959f-5f4f1fcef4c5", 1, date(), "دستگاه", 6748000),
+("2b538f49-59e2-4773-bdd9-42f095b773bb", "سرم پوست بایو آکوا مدل ویتامین C حجم 100 میلی لیتر",
+"d7f5c843-8d5c-4bc6-804a-6c80741c787d", 17, date(), "میلی لیتر", 68800);
 
-INSERT INTO inventory_partitions(partition_id, room_number, floor_number, shelf_number)
-VALUES("c8592779-2e91-43c9-bf1c-1b5b3c9f0b88", "S1", "A", "1"),
-("bda3fb74-2cb8-410a-a56f-a22633bb6e97", "S1", "A", "2"),
-("cb07ac4f-e660-4301-b18b-25fb40c69a44", "S1", "A", "3"),
-("37403c74-ab9a-467f-824a-4b53b79d30d4", "S1", "B", "1"),
-("9163ab26-4094-471c-b300-c88741d6a4fa", "S1", "B", "2"),
-("6d412075-19f9-426d-8e70-5da6c341defe", "S1", "C", "1"),
-("c13e896b-bf03-4290-9c67-2cbd5aa56059", "S1", "C", "2");
+INSERT INTO stores(storeId, address)
+VALUES("fa9b0045-fada-428c-aa28-cb4f7122f08e", "تهران، خیابان زرتشت، نبش کوچه شانزدهم");
 
-INSERT INTO inventory_products(partition_id, product_id)
-VALUES("c8592779-2e91-43c9-bf1c-1b5b3c9f0b88", "fd18452e-5d51-4e99-bcf3-e0c8cd87e0d7"),
-("bda3fb74-2cb8-410a-a56f-a22633bb6e97", "451c4a71-b25f-4120-866e-4fa32b1a8997"),
-("37403c74-ab9a-467f-824a-4b53b79d30d4", "eebab6cc-954e-476a-99fb-bb28bfe30fce");
+INSERT INTO orders(orderId, submissionDate, state, description)
+VALUES("e9e4fba0-0be3-4c0a-a81d-5dac3e297640", date(), "PENDING", NULL);
 
-INSERT INTO orders(order_id, submission_date, state, description)
-VALUES("d089fae4-acbe-4a27-90e8-c0033d5ef2dc", date(), "PENDING", NULL);
+INSERT INTO inventories(inventoryId, roomNumber, floorNumber, shelfNumber)
+VALUES("130e459d-b9aa-4c06-a6b9-5eabf9a29869", "S1", "A", "1"),
+("9a7bb12b-8a89-4d64-83ac-82e0adc8ead1", "S1", "A", "2"),
+("fde700a8-633a-473e-b420-43a55a37e15c", "S1", "A", "3"),
+("3801fdf5-ec7c-4f48-87ed-7c112cad6abf", "S1", "B", "1"),
+("08db9838-b09e-4967-a4a6-317441b1887a", "S1", "B", "2"),
+("ae3e7d48-5e9a-4563-9ed6-5e8dd6531d4b", "S1", "C", "1"),
+("ef8d5a1e-2906-4f30-98e2-b889c0da13b1", "S1", "C", "2");
 
-INSERT INTO order_details(order_id, product_id, quantity)
-VALUES("d089fae4-acbe-4a27-90e8-c0033d5ef2dc", "fd18452e-5d51-4e99-bcf3-e0c8cd87e0d7", 56),
-("d089fae4-acbe-4a27-90e8-c0033d5ef2dc", "451c4a71-b25f-4120-866e-4fa32b1a8997", 12);
+INSERT INTO inventoryProducts(inventoryId, productId)
+VALUES("130e459d-b9aa-4c06-a6b9-5eabf9a29869", "c9579fda-bf49-42e2-9056-9a3e2367b484"),
+("9a7bb12b-8a89-4d64-83ac-82e0adc8ead1", "0f857122-73b5-4441-a1f9-70c6b61026b0"),
+("3801fdf5-ec7c-4f48-87ed-7c112cad6abf", "2b538f49-59e2-4773-bdd9-42f095b773bb");
 
-INSERT INTO store_branches(branch_id, address)
-VALUES("273830dc-c063-4d11-8abd-1bf7b1acb420", "تهران، خیابان زرتشت، نبش کوچه شانزدهم");
+INSERT INTO orderDetails(orderId, productId, quantity)
+VALUES("e9e4fba0-0be3-4c0a-a81d-5dac3e297640", "c9579fda-bf49-42e2-9056-9a3e2367b484", 56),
+("e9e4fba0-0be3-4c0a-a81d-5dac3e297640", "0f857122-73b5-4441-a1f9-70c6b61026b0", 12);
 
-
-INSERT INTO export_orders(order_id, destination_id, export_date)
-VALUES("d089fae4-acbe-4a27-90e8-c0033d5ef2dc", "273830dc-c063-4d11-8abd-1bf7b1acb420", "2022-07-03");
+INSERT INTO exportOrders(orderId, destinationId, exportDate)
+VALUES("e9e4fba0-0be3-4c0a-a81d-5dac3e297640", "fa9b0045-fada-428c-aa28-cb4f7122f08e", "2022-07-03");
