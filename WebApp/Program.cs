@@ -1,21 +1,56 @@
 ﻿using System.Text.Json.Serialization;
+using Auth0.AspNetCore.Authentication;
 using Dapper;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using WebApp.Utilities;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddMvc().AddJsonOptions(opts =>
+var services = builder.Services;
+var configuration = builder.Configuration;
+
+services.AddMvc().AddJsonOptions(options =>
 {
     var enumConverter = new JsonStringEnumConverter();
-    opts.JsonSerializerOptions.Converters.Add(enumConverter);
+    options.JsonSerializerOptions.Converters.Add(enumConverter);
 });
-builder.Services.AddControllers();
-builder.Services.AddRepositories();
+
+services.AddControllers();
+services.AddControllersWithViews();
+
+services.AddAuth0WebAppAuthentication(options =>
+{
+    options.Domain = configuration["Auth0:Domain"];
+    options.ClientId = configuration["Auth0:ClientId"];
+    options.ClientSecret = configuration["Auth0:ClientSecret"];
+
+    options.OpenIdConnectEvents = new OpenIdConnectEvents
+    {
+        OnRemoteFailure = context =>
+        {
+            context.Response.Redirect("/");
+            context.HandleResponse();
+
+            return Task.FromResult(0);
+        }
+    };
+})
+    .WithAccessToken(options =>
+    {
+        options.Audience = configuration["Auth0:Audience"];
+    });
+services.AddRepositories();
 
 SqlMapper.AddTypeHandler(new SqliteGuidTypeHandler());
 
 var app = builder.Build();
+app.UseRouting();
 app.MapControllers();
+app.UseAuthentication();
+app.UseAuthorization();
 
-app.MapGet("/", () => "Hello World!");
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Home}/{action=Index}");
+
 
 app.Run();

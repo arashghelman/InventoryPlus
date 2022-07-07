@@ -33,10 +33,10 @@ namespace WebApp.Controllers
             return Ok(inventory.InventoryId);
         }
 
-        public record PutProductData(Guid ProductId);
+        public record PostProductData(Guid ProductId);
 
         [HttpPost("{inventoryId:guid}/products")]
-        public async Task<IActionResult> PutProductAsync(Guid inventoryId, PutProductData data)
+        public async Task<IActionResult> PostProductAsync(Guid inventoryId, PostProductData data)
         {
             await _inventoriesRepo.InsertProductAsync(inventoryId, data.ProductId);
             return Ok();

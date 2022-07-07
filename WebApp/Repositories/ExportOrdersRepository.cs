@@ -20,7 +20,7 @@ namespace WebApp.Repositories
                 LEFT JOIN orderDetails od ON e.orderId = od.orderId",
                 (export, orderDetail) =>
                 {
-                    if(!exportsDict.TryGetValue(export.OrderId, out ExportOrder exportEntry))
+                    if(!exportsDict.TryGetValue(export.OrderId, out var exportEntry))
                     {
                         exportEntry = export;
                         exportEntry.Details = new();

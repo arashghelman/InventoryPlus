@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebApp.Models;
 using WebApp.Repositories;
 
@@ -28,6 +27,13 @@ namespace WebApp.Controllers
         {
             var product = await _productsRepo.SelectSingleAsync(id);
             return Ok(product);
+        }
+
+        [HttpGet("params")]
+        public async Task<IActionResult> GetByNameAsync(string name)
+        {
+            var products = await _productsRepo.SelectByNameAsync(name);
+            return Ok(products);
         }
 
         public record PostData(string Name, Guid CategoryId, int Stock, string Unit, float Price);

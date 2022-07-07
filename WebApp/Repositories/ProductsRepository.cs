@@ -25,6 +25,17 @@ namespace WebApp.Repositories
             return product;
         }
 
+        public async Task<IEnumerable<Product>> SelectByNameAsync(string name)
+        {
+            using var connection = SqliteConnectionHandler.Connect();
+
+            var products = await connection.QueryAsync<Product>(
+                @"SELECT * from products WHERE name like @name",
+                new { name = $"%{name}%" });
+
+            return products;
+        }
+
         public async Task InsertAsync(Product product)
         {
             using var connection = SqliteConnectionHandler.Connect();

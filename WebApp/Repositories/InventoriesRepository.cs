@@ -16,22 +16,22 @@ namespace WebApp.Repositories
 
             var inventories = await connection.QueryAsync<Inventory, Guid, Inventory>(
                 @"SELECT i.inventoryId, i.roomNumber, i.floorNumber, i.shelfNumber,
-                ip.productId FROM inventories i JOIN inventoryProducts ip
+                ip.productId FROM inventories i LEFT JOIN inventoryProducts ip
                 ON i.inventoryId = ip.inventoryId",
-                (inventory, product) =>
+                (inventory, productId) =>
                 {
-                    if (!inventoriesDict.TryGetValue(inventory.InventoryId, out Inventory inventoryEntry))
+                    if (!inventoriesDict.TryGetValue(inventory.InventoryId, out var inventoryEntry))
                     {
                         inventoryEntry = inventory;
                         inventoryEntry.Products = new();
                         inventoriesDict.Add(inventoryEntry.InventoryId, inventoryEntry);
                     }
 
-                    inventoryEntry.Products.Add(product);
+                    inventoryEntry.Products.Add(productId);
                     return inventory;
                 },
                 splitOn: "productId");
-            return inventories;
+            return inventories.Distinct().ToList();
         }
 
         public async Task InsertAsync(Inventory inventory)
