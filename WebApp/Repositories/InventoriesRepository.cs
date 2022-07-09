@@ -7,31 +7,23 @@ namespace WebApp.Repositories
 {
     public class InventoriesRepository
     {
-        // not working
         public async Task<IEnumerable<Inventory>> SelectAllAsync()
         {
             using var connection = SqliteConnectionHandler.Connect();
 
-            var inventoriesDict = new Dictionary<Guid, Inventory>();
+            var inventories = await connection.QueryAsync<Inventory>(
+                @"SELECT inventoryId, roomNumber, floorNumber, shelfNumber
+                FROM inventories");
 
-            var inventories = await connection.QueryAsync<Inventory, Guid, Inventory>(
-                @"SELECT i.inventoryId, i.roomNumber, i.floorNumber, i.shelfNumber,
-                ip.productId FROM inventories i LEFT JOIN inventoryProducts ip
-                ON i.inventoryId = ip.inventoryId",
-                (inventory, productId) =>
-                {
-                    if (!inventoriesDict.TryGetValue(inventory.InventoryId, out var inventoryEntry))
-                    {
-                        inventoryEntry = inventory;
-                        inventoryEntry.Products = new();
-                        inventoriesDict.Add(inventoryEntry.InventoryId, inventoryEntry);
-                    }
+            foreach (var item in inventories)
+            {
+                var productIds = await connection.QueryAsync<Guid>(
+                    @"SELECT productId FROM inventoryProducts WHERE inventoryId = @id",
+                    new { id = item.InventoryId.ToString() });
+                item.Products = productIds.ToList();
+            }
 
-                    inventoryEntry.Products.Add(productId);
-                    return inventory;
-                },
-                splitOn: "productId");
-            return inventories.Distinct().ToList();
+            return inventories;
         }
 
         public async Task InsertAsync(Inventory inventory)

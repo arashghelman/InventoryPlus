@@ -8,6 +8,17 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
+services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 services.AddMvc().AddJsonOptions(options =>
 {
     var enumConverter = new JsonStringEnumConverter();
@@ -33,17 +44,15 @@ services.AddAuth0WebAppAuthentication(options =>
             return Task.FromResult(0);
         }
     };
-})
-    .WithAccessToken(options =>
-    {
-        options.Audience = configuration["Auth0:Audience"];
-    });
+});
+
 services.AddRepositories();
 
 SqlMapper.AddTypeHandler(new SqliteGuidTypeHandler());
 
 var app = builder.Build();
 app.UseRouting();
+app.UseCors();
 app.MapControllers();
 app.UseAuthentication();
 app.UseAuthorization();
@@ -51,6 +60,5 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}");
-
 
 app.Run();
